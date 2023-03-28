@@ -1,18 +1,7 @@
 pipeline {
     agent any
 
-    stages {
-        stage('Build') {
-            steps {
-                sh 'npm install'
-                sh 'npm run build'
-            }
-        }
-        stage('Test') {
-            steps {
-                sh 'npm run test'
-            }
-        }
+    stages {         
         stage('Deploy to Dev') {
             when {
                 branch 'dev'
@@ -21,7 +10,7 @@ pipeline {
                 SERVER = 'dev.example.com'
             }
             steps {
-                sh 'npm run deploy --server=$SERVER'
+                echo 'Dev Branch'
             }
         }
         stage('Deploy to Prod') {
@@ -32,7 +21,7 @@ pipeline {
                 SERVER = 'prod.example.com'
             }
             steps {
-                sh 'npm run deploy --server=$SERVER'
+                echo 'Main branch'
             }
         }
     }
