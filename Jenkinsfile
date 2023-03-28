@@ -26,7 +26,7 @@ pipeline {
         }
         stage('Deploy to Prod') {
             when {
-                branch 'master'
+                branch 'main'
             }
             environment {
                 SERVER = 'prod.example.com'
